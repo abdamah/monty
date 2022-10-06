@@ -93,3 +93,33 @@ void _div(stack_t **head, unsigned int counter)
 	free((*head)->prev);
 	(*head)->prev = NULL;
 }
+
+
+/**
+ * _mod - Computes the modulus of the second value from the
+ *             top of a head_t linked list  by the top value.
+ * @head: A pointer to the top mode node of a head_t linked list.
+ * @counter: The current working line number of a Monty bytecodes file.
+ *
+ * Description: The result is stored in the second value node
+ *              from the top and the top value is removed.
+ */
+void _mod(stack_t **head, unsigned int counter)
+{
+	if ((*head)->next == NULL || (*head)->next->next == NULL)
+	{
+		fprintf(stderr, "L%u: division by zero\n", counter);
+		exit(EXIT_FAILURE);
+		return;
+	}
+
+	if ((*head)->next->n == 0)
+	{
+		fprintf(stderr, "L%u: division by zero\n", counter);
+		exit(EXIT_FAILURE);
+		return;
+	}
+
+	(*head)->next->next->n %= (*head)->next->n;
+	pop(head, counter);
+}

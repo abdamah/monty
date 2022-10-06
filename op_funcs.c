@@ -20,6 +20,7 @@ void select_func(stack_t **head, char *token, unsigned int counter)
 		{"sub", sub},
 		{"mul", mul},
 		{"div", _div},
+		{"mod", _mod},
 		{NULL, NULL}
 	};
 
